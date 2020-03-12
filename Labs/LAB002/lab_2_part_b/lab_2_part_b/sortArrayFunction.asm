@@ -1,16 +1,10 @@
 ; function to sort the array pointed to by Z into Y
 sortArrayFunction:		; prologue
 	push curr 
-	push index 
-	push size
 	push first
 	push second
 
 ; ============== SORT ==============
-ldi YL, low(sortArray)
-ldi YH, high(sortArray)
-ldi index, 0			; set index to 0 to begin increments
-ldi size, 13 			; 13 elements in the array (max, not including removed duplicates)
 
 sort:
 	ld first, Y+
@@ -59,8 +53,12 @@ sortStageTwo:
 
 endSortArrayFunction:		; epilogue
 	pop curr 
-	pop index 
-	pop size
 	pop first
 	pop second
-	rcall end
+	rcall arrangeLevels
+
+
+; load first array into the data mem
+; take second array value by value in a loop
+; inside te loop we then call insert_request to sort the value into the array
+; then return final array size

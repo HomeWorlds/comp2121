@@ -1,14 +1,14 @@
 
-AVRASM ver. 2.2.7  C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm Wed Mar 11 01:52:10 2020
+AVRASM ver. 2.2.7  C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm Thu Mar 12 13:59:49 2020
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m2560def.inc'
 C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m2560def.inc'
-C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm(27): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\insertArrayFunction.asm'
-C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm(33): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm'
+C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm(31): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\insertArrayFunction.asm'
+C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm(41): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m2560def.inc'
 C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m2560def.inc'
-C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm(27): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\insertArrayFunction.asm'
-C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm(33): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm'
+C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm(31): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\insertArrayFunction.asm'
+C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm(41): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm'
                                  
                                  .include "m2560def.inc"
                                  
@@ -1920,124 +1920,124 @@ C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_
                                  
                                  ; call memory insert file for first array
                                  insertArray:
+000007 ef0b                      	ldi r16, low(RAMEND-4)	; -4 to store local vars
+000008 e211                      	ldi r17, high(RAMEND-4)	
+000009 bf0d                      	out SPL, r16	;stack pointer low, high
+00000a bf1e                      	out SPH, r17
                                  
                                  .include "insertArrayFunction.asm"
                                  
                                  insertArrayFunction:		; prologue
-000007 930f                      	push curr 
-000008 931f                      	push index 
-000009 934f                      	push size
-00000a 932f                      	push first
-00000b 933f                      	push second
+00000b 930f                      	push curr 
+00000c 931f                      	push index 
+00000d 934f                      	push size
+00000e 932f                      	push first
+00000f 933f                      	push second
                                  
                                  ; ============== FIRST ==============
                                  initialiseFirst:
-00000c e0e2                      	ldi ZL, low(firstArray<<1)			
-00000d e0f0                      	ldi ZH, high(firstArray<<1)
-00000e e0c0                      	ldi YL, low(sortArray)
-00000f e0d2                      	ldi YH, high(sortArray)
-000010 e010                      	ldi index, 0
-000011 e047                      	ldi size, 7
+000010 e0e2                      	ldi ZL, low(firstArray<<1)			
+000011 e0f0                      	ldi ZH, high(firstArray<<1)
+000012 e0c0                      	ldi YL, low(sortArray)
+000013 e0d2                      	ldi YH, high(sortArray)
+000014 e010                      	ldi index, 0
+000015 e047                      	ldi size, 7
                                  	
                                  moveFirstToMemory:
-000012 1714                      	cp index, size
-000013 f021                      	breq initialiseSecond
-000014 9105                      	lpm curr, Z+
-000015 9309                      	st Y+, curr 
-000016 9513                      	inc index
-000017 cffa                      	rjmp moveFirstToMemory
+000016 1714                      	cp index, size
+000017 f021                      	breq initialiseSecond
+000018 9105                      	lpm curr, Z+
+000019 9309                      	st Y+, curr 
+00001a 9513                      	inc index
+00001b cffa                      	rjmp moveFirstToMemory
                                  
                                  ; ============== SECOND ==============
                                  
                                  initialiseSecond:
-000018 e0ea                      	ldi ZL, low(secondArray<<1)			
-000019 e0f0                      	ldi ZH, high(secondArray<<1)
-00001a e044                      	ldi size, 4
-00001b e010                      	ldi index, 0
+00001c e0ea                      	ldi ZL, low(secondArray<<1)			
+00001d e0f0                      	ldi ZH, high(secondArray<<1)
+00001e e044                      	ldi size, 4
+00001f e010                      	ldi index, 0
                                  	
                                  moveSecondToMemory:
-00001c 1714                      	cp index, size
-00001d f021                      	breq endInsertArrayFunction
-00001e 9105                      	lpm curr, Z+
-00001f 9309                      	st Y+, curr 
-000020 9513                      	inc index
-000021 cffa                      	rjmp moveSecondToMemory
+000020 1714                      	cp index, size
+000021 f021                      	breq endInsertArrayFunction
+000022 9105                      	lpm curr, Z+
+000023 9309                      	st Y+, curr 
+000024 9513                      	inc index
+000025 cffa                      	rjmp moveSecondToMemory
                                  
                                  endInsertArrayFunction:		; epilogue
-000022 910f                      	pop curr 
-000023 911f                      	pop index 
-000024 914f                      	pop size
-000025 912f                      	pop first
-000026 913f                      	pop second
-000027 d000                      
+000026 910f                      	pop curr 
+000027 911f                      	pop index 
+000028 914f                      	pop size
+000029 912f                      	pop first
+00002a 913f                      	pop second
+00002b d000                      
                                  sort_prep:
                                  ; Here we have the two arrays combined in data memory
                                  ; And we need to prep them for the sort function.
+00002c e0c0                      ldi YL, low(sortArray)
+00002d e0d2                      ldi YH, high(sortArray)
+00002e e010                      ldi index, 0			; set index to 0 to begin increments
+00002f e04d                      ldi size, 13 			; 13 elements in the array (max, not including removed duplicates)
                                  
                                  .include "sortArrayFunction.asm"
                                  
                                  sortArrayFunction:		; prologue
-000028 930f                      	push curr 
-000029 931f                      	push index 
-00002a 934f                      	push size
-00002b 932f                      	push first
-00002c 933f                      	push second
+000030 930f                      	push curr 
+000031 932f                      	push first
+000032 933f                      	push second
                                  
                                  ; ============== SORT ==============
-00002d e0c0                      ldi YL, low(sortArray)
-00002e e0d2                      ldi YH, high(sortArray)
-00002f e010                      ldi index, 0			; set index to 0 to begin increments
-000030 e04d                      ldi size, 13 			; 13 elements in the array (max, not including removed duplicates)
                                  
                                  sort:
-000031 9129                      	ld first, Y+
-000032 8138                      	ld second, Y
+000033 9129                      	ld first, Y+
+000034 8138                      	ld second, Y
                                  
-000033 1732                      	cp second, first	; check if second is smaller than first. (need to be swapped)
-000034 f010                      	brlo swaper
-000035 f031                      	breq remover
-000036 c009                      	rjmp sortStageTwo	; Skip if ordered correctly
+000035 1732                      	cp second, first	; check if second is smaller than first. (need to be swapped)
+000036 f010                      	brlo swaper
+000037 f031                      	breq remover
+000038 c009                      	rjmp sortStageTwo	; Skip if ordered correctly
                                  
                                  swaper:		
-000037 2f03                      	mov curr, second	; this will get cleared so store in temp (curr).
-000038 8328                      	st Y, first
-000039 930a                      	st -Y, curr
-00003a 9621                      	adiw r28, 1			; Moves onto next value
+000039 2f03                      	mov curr, second	; this will get cleared so store in temp (curr).
+00003a 8328                      	st Y, first
+00003b 930a                      	st -Y, curr
+00003c 9621                      	adiw r28, 1			; Moves onto next value
                                  
-00003b c004                      	rjmp sortStageTwo
+00003d c004                      	rjmp sortStageTwo
                                  
                                  remover:
-00003c 2f03                      	mov curr, second	; this will get cleared so store in temp (curr).
-00003d 8328                      	st Y, first
-00003e 921a                      	st -Y, r1
-00003f 9621                      	adiw r28, 1			; Moves onto next value
+00003e 2f03                      	mov curr, second	; this will get cleared so store in temp (curr).
+00003f 8328                      	st Y, first
+000040 921a                      	st -Y, r1
+000041 9621                      	adiw r28, 1			; Moves onto next value
                                  
                                  ; Move onto next values since these are correctly sorted.
                                  
                                  sortStageTwo:
-000040 9513                      	inc index			; Increment index
-000041 1714                      	cp index, size		; Compare it with size (have we reached it yet?)
-000042 f370                      	brlo sort
+000042 9513                      	inc index			; Increment index
+000043 1714                      	cp index, size		; Compare it with size (have we reached it yet?)
+000044 f370                      	brlo sort
                                  
-000043 954a                      	dec size			; decrease size. (we want to perform a sort on all values once for each value in the list)
+000045 954a                      	dec size			; decrease size. (we want to perform a sort on all values once for each value in the list)
                                  
-000044 3040                      	cpi size, 0			; have we finished the process?
-000045 f021                      	breq endSortArrayFunction
+000046 3040                      	cpi size, 0			; have we finished the process?
+000047 f021                      	breq endSortArrayFunction
                                  
                                  	; Havent finished yet, need to redo the sort for the new array.
                                  	; Refresh values to initial positions (except size)
                                  
-000046 e010                      	ldi index, 0
-000047 e0c0                      	ldi YL, low(sortArray)
-000048 e0d2                      	ldi YH, high(sortArray)
+000048 e010                      	ldi index, 0
+000049 e0c0                      	ldi YL, low(sortArray)
+00004a e0d2                      	ldi YH, high(sortArray)
                                  
-000049 cfe7                      	rjmp sort
+00004b cfe7                      	rjmp sort
                                  
                                  
                                  endSortArrayFunction:		; epilogue
-00004a 910f                      	pop curr 
-00004b 911f                      	pop index 
-00004c 914f                      	pop size
+00004c 910f                      	pop curr 
 00004d 912f                      	pop first
 00004e 913f                      	pop second
 00004f d000                      
@@ -2068,7 +2068,7 @@ counted separately from r26..r31 here.
 "ATmega2560" register use summary:
 x  :   0 y  :   8 z  :   2 r0 :   0 r1 :   1 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  12 r17:  15 r18:   9 r19:   9 r20:  13 
+r13:   0 r14:   0 r15:   0 r16:  14 r17:  15 r18:   9 r19:   9 r20:  11 
 r21:   1 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   6 
 r29:   3 r30:   2 r31:   2 
 Registers used: 13 out of 35 (37.1%)
@@ -2084,17 +2084,17 @@ clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   7 cls   :   0
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   4 cpc   :   0 
 cpi   :   1 cpse  :   0 dec   :   1 eicall:   0 eijmp :   0 elpm  :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
-in    :   0 inc   :   3 jmp   :   0 ld    :   2 ldd   :   0 ldi   :  17 
+in    :   0 inc   :   3 jmp   :   0 ld    :   2 ldd   :   0 ldi   :  19 
 lds   :   0 lpm   :   2 lsl   :   0 lsr   :   0 mov   :   2 movw  :   0 
 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
-ori   :   0 out   :   0 pop   :  10 push  :  10 rcall :   2 ret   :   0 
+ori   :   0 out   :   2 pop   :   8 push  :   8 rcall :   2 ret   :   0 
 reti  :   0 rjmp  :   7 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :   0 
 sbrs  :   0 sec   :   0 seh   :   0 sei   :   0 sen   :   0 ser   :   0 
 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
 st    :   6 std   :   0 sts   :   0 sub   :   0 subi  :   0 swap  :   0 
 tst   :   0 wdr   :   0 
-Instructions used: 17 out of 116 (14.7%)
+Instructions used: 18 out of 116 (15.5%)
 
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%

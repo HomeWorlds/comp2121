@@ -34,13 +34,13 @@
   <initialiseSecond><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\insertArrayFunction.asm</FILE><LINE>28</LINE></initialiseSecond>
   <moveSecondToMemory><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\insertArrayFunction.asm</FILE><LINE>34</LINE></moveSecondToMemory>
   <endInsertArrayFunction><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\insertArrayFunction.asm</FILE><LINE>42</LINE></endInsertArrayFunction>
-  <sort_prep><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm</FILE><LINE>29</LINE></sort_prep>
+  <sort_prep><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm</FILE><LINE>33</LINE></sort_prep>
   <sortArrayFunction><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm</FILE><LINE>2</LINE></sortArrayFunction>
-  <sort><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm</FILE><LINE>15</LINE></sort>
-  <swaper><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm</FILE><LINE>24</LINE></swaper>
-  <remover><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm</FILE><LINE>32</LINE></remover>
-  <sortStageTwo><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm</FILE><LINE>40</LINE></sortStageTwo>
-  <endSortArrayFunction><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm</FILE><LINE>60</LINE></endSortArrayFunction>
-  <end><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm</FILE><LINE>35</LINE></end>
+  <sort><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm</FILE><LINE>9</LINE></sort>
+  <swaper><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm</FILE><LINE>18</LINE></swaper>
+  <remover><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm</FILE><LINE>26</LINE></remover>
+  <sortStageTwo><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm</FILE><LINE>34</LINE></sortStageTwo>
+  <endSortArrayFunction><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\sortArrayFunction.asm</FILE><LINE>54</LINE></endSortArrayFunction>
+  <end><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm</FILE><LINE>43</LINE></end>
  </LABELS>
 </ASSEMBLER_INFO>

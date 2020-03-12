@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm Wed Mar 11 01:52:10 2020
+AVRASM ver. 2.2.7  C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b\lab_2_part_b\main.asm Thu Mar 12 13:59:49 2020
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1368,17 +1368,17 @@ DSEG sortArray    00000200
 CSEG insertArray  00000007
 CSEG firstArray   00000001
 CSEG secondArray  00000005
-CSEG insertArrayFunction 00000007
-CSEG initialiseFirst 0000000c
-CSEG moveFirstToMemory 00000012
-CSEG initialiseSecond 00000018
-CSEG moveSecondToMemory 0000001c
-CSEG endInsertArrayFunction 00000022
-CSEG sort_prep    00000028
-CSEG sortArrayFunction 00000028
-CSEG sort         00000031
-CSEG swaper       00000037
-CSEG remover      0000003c
-CSEG sortStageTwo 00000040
-CSEG endSortArrayFunction 0000004a
+CSEG insertArrayFunction 0000000b
+CSEG initialiseFirst 00000010
+CSEG moveFirstToMemory 00000016
+CSEG initialiseSecond 0000001c
+CSEG moveSecondToMemory 00000020
+CSEG endInsertArrayFunction 00000026
+CSEG sort_prep    0000002c
+CSEG sortArrayFunction 00000030
+CSEG sort         00000033
+CSEG swaper       00000039
+CSEG remover      0000003e
+CSEG sortStageTwo 00000042
+CSEG endSortArrayFunction 0000004c
 CSEG end          00000050
