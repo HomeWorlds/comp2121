@@ -9,6 +9,8 @@
 .def direction = r8		; direction of the lift ;; FOR PART C
 .def current_level = r9	; the current level		;; FOR PART C
 .def return_value = r10	; return value from a called function
+.def temp1 = r11		; second temporary value
+.def temp_size = r12	; increasing size
 
 ; sort_array : contains the final sorted array for all values needed.
 .dseg 

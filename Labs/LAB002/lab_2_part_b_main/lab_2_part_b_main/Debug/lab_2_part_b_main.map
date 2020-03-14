@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm Sat Mar 14 17:16:11 2020
+AVRASM ver. 2.2.7  C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm Sat Mar 14 18:01:04 2020
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1365,10 +1365,17 @@ DEF  first        r18
 DEF  second       r19
 DEF  size         r20
 DEF  direction    r8
-DEF  currentLevel r9
+DEF  current_level r9
+DEF  return_value r10
 DSEG sort_array   00000200
+DSEG temp_array   00000214
 CSEG start        00000007
 CSEG first_array  00000001
 CSEG second_array 00000005
 CSEG insert_initial_array 00000011
-CSEG end          00000017
+CSEG initialise_new_values 00000029
+CSEG insert_request 00000017
+CSEG comparison_loop 00000020
+CSEG end_insert_request 00000022
+CSEG insert_new_values 0000002d
+CSEG end          00000033

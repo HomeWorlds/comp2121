@@ -1,14 +1,16 @@
 
-AVRASM ver. 2.2.7  C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm Sat Mar 14 17:16:11 2020
+AVRASM ver. 2.2.7  C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm Sat Mar 14 18:01:04 2020
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m2560def.inc'
 C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm(1): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\header.asm'
 C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\header.asm(2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m2560def.inc'
 C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm(2): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\initialise.asm'
+C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm(6): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\insert_request.asm'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m2560def.inc'
 C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm(1): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\header.asm'
 C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\header.asm(2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m2560def.inc'
 C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm(2): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\initialise.asm'
+C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm(6): Including file 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\insert_request.asm'
                                  
                                  .include "header.asm"		; File for initialising variables and data objects
                                  
@@ -1899,13 +1901,17 @@ C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_
                                  .def first = r18		; Part of the bubble sort
                                  .def second = r19		; ""
                                  .def size = r20			; size value storage 
-                                 .def direction = r8		; direction of the lift
-                                 .def currentLevel = r9	; the current level
+                                 .def direction = r8		; direction of the lift ;; FOR PART C
+                                 .def current_level = r9	; the current level		;; FOR PART C
+                                 .def return_value = r10	; return value from a called function
                                  
                                  ; sort_array : contains the final sorted array for all values needed.
                                  .dseg 
                                  sort_array:
-000200                           	.byte 20			
+000200                           	.byte 20	
+                                 	
+                                 temp_array:
+000214                           	.byte 20			
                                  
                                  ; first_array: contains the initial array to be places in sort_array. 
                                  ; second_array: contains the next array, to be iterativley inserted into sort_array.
@@ -1915,7 +1921,7 @@ C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_
 000001 0201
 000002 0705
 000003 0c08
-C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\header.asm(22): warning: .cseg .db misalignment - padding zero byte
+C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\header.asm(26): warning: .cseg .db misalignment - padding zero byte
 C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm(1): 'C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\header.asm' included form here
 000004 0014                      	.db 1,2,5,7,8,12,20
                                  second_array:			
@@ -1941,14 +1947,73 @@ C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_
 000011 9105                      	lpm temp, Z+
 000012 9309                      	st Y+, temp
 000013 1714                      	cp index, size
-000014 f011                      	breq end
+000014 f0a1                      	breq initialise_new_values
 000015 9513                      	inc index
 000016 cffa                      	rjmp insert_initial_array
                                  
-                                 end:
-000017 cfff                      	rjmp end
                                  
                                  ; Function includes list:
+                                 .include "insert_request.asm"
+                                 
+                                 ; stored in temp and a pointer to sort_array stored in Y
+                                 insert_request: ;prologue
+000017 932f                      	push first
+000018 933f                      	push second
+000019 931f                      	push index
+00001a 934f                      	push size
+00001b 93ef                      	push ZL
+00001c 93ff                      	push ZH
+                                 
+00001d e0c0                      	ldi YL, low(sort_array<<1)
+00001e e0d4                      	ldi YH, high(sort_array<<1)
+00001f e030                      	ldi second, 0
+                                 
+                                 comparison_loop:
+                                 	; temp stores current value, Y stores current array vallue
+                                 	; insert a value that is smaller but not equal to any element in the array
+                                 	; use "second" as binary to check if smaller 0 no 1 yes
+                                 
+000020 3031                      	cpi second, 1
+000021 f001                      	breq end_insert_request
+                                 
+                                 	; using pointers to sort_array and temp
+                                 	; store both in order into temp_array
+                                 	; store temp array into sort_array
+                                 
+                                 
+                                 end_insert_request: ;epilogue
+000022 91ff                      	pop ZH
+000023 91ef                      	pop ZL
+000024 914f                      	pop size
+000025 911f                      	pop index
+000026 913f                      	pop second
+000027 912f                      	pop first
+000028 9508                      	ret
+                                 
+                                 ; Function name : insert_request
+                                 ; Takes in pointer to sort_array as well as one value
+                                 ; places value in proper location in sort_array
+                                 ; does nothing if value exists in array. 
+                                 
+                                 ; now we insert new values from second_array into sort array
+                                 initialise_new_values:
+000029 e0ea                      	ldi ZL, low(second_array<<1)
+00002a e0f0                      	ldi ZH, high(second_array<<1)
+00002b e044                      	ldi size, 4
+00002c e010                      	ldi index, 0
+                                 	
+                                 insert_new_values:
+00002d 9105                      	lpm temp, Z+
+00002e dfe8                      	rcall insert_request
+00002f 1714                      	cp index, size
+000030 f011                      	breq end
+000031 9513                      	inc index
+000032 cffa                      	rjmp insert_new_values
+                                 
+                                 
+                                 
+                                 end:
+000033 cfff                      	rjmp end
 
 
 RESOURCE USE INFORMATION
@@ -1966,41 +2031,41 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega2560" register use summary:
-x  :   0 y  :   1 z  :   1 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   1 z  :   2 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   4 r17:   5 r18:   0 r19:   0 r20:   2 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   1 
-r29:   1 r30:   1 r31:   1 
-Registers used: 9 out of 35 (25.7%)
+r13:   0 r14:   0 r15:   0 r16:   5 r17:  10 r18:   2 r19:   4 r20:   6 
+r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   2 
+r29:   2 r30:   4 r31:   4 
+Registers used: 11 out of 35 (31.4%)
 
 "ATmega2560" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 break :   0 breq  :   1 brge  :   0 brhc  :   0 
+brcc  :   0 brcs  :   0 break :   0 breq  :   3 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
-clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   1 cpc   :   0 
-cpi   :   0 cpse  :   0 dec   :   0 eicall:   0 eijmp :   0 elpm  :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   2 cpc   :   0 
+cpi   :   1 cpse  :   0 dec   :   0 eicall:   0 eijmp :   0 elpm  :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
-in    :   0 inc   :   1 jmp   :   0 ld    :   0 ldd   :   0 ldi   :   8 
-lds   :   0 lpm   :   1 lsl   :   0 lsr   :   0 mov   :   0 movw  :   0 
+in    :   0 inc   :   2 jmp   :   0 ld    :   0 ldd   :   0 ldi   :  15 
+lds   :   0 lpm   :   2 lsl   :   0 lsr   :   0 mov   :   0 movw  :   0 
 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
-ori   :   0 out   :   2 pop   :   0 push  :   0 rcall :   0 ret   :   0 
-reti  :   0 rjmp  :   3 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
+ori   :   0 out   :   2 pop   :   6 push  :   6 rcall :   1 ret   :   1 
+reti  :   0 rjmp  :   4 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :   0 
 sbrs  :   0 sec   :   0 seh   :   0 sei   :   0 sen   :   0 ser   :   0 
 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
 st    :   1 std   :   0 sts   :   0 sub   :   0 subi  :   0 swap  :   0 
 tst   :   0 wdr   :   0 
-Instructions used: 8 out of 116 (6.9%)
+Instructions used: 13 out of 116 (11.2%)
 
 "ATmega2560" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000030     36     12     48  262144   0.0%
-[.dseg] 0x000200 0x000214      0     20     20    8192   0.2%
+[.cseg] 0x000000 0x000068     92     12    104  262144   0.0%
+[.dseg] 0x000200 0x000228      0     40     40    8192   0.5%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 
 Assembly complete, 0 errors, 1 warnings
