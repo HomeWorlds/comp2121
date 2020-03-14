@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_a\lab_2_part_a\main.asm Thu Mar 12 14:43:21 2020
+AVRASM ver. 2.2.7  C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm Sat Mar 14 17:16:11 2020
 
 
 EQU  SIGNATURE_000 0000001e
@@ -1359,13 +1359,16 @@ EQU  URXC3addr    0000006c
 EQU  UDRE3addr    0000006e
 EQU  UTXC3addr    00000070
 EQU  INT_VECTORS_SIZE 00000072
-EQU  size         00000004
-DEF  index        r16
-DEF  curr         r17
-DSEG final_string 00000500
-CSEG main         00000003
-CSEG initial_string 00000001
-CSEG stackLoad    0000000c
-CSEG prepReversal 00000012
-CSEG stackToRamProcess 00000015
-CSEG end          0000001b
+DEF  temp         r16
+DEF  index        r17
+DEF  first        r18
+DEF  second       r19
+DEF  size         r20
+DEF  direction    r8
+DEF  currentLevel r9
+DSEG sort_array   00000200
+CSEG start        00000007
+CSEG first_array  00000001
+CSEG second_array 00000005
+CSEG insert_initial_array 00000011
+CSEG end          00000017

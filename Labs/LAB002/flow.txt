@@ -1,0 +1,42 @@
+
+
+in prog mem
+
+first array
+
+second array
+
+===
+
+cseg 
+
+sort array max size of 9
+
+====
+
+load first array into sort array
+
+
+===
+
+point to second array
+point to sort array
+load varsa
+
+loop through second array
+
+====
+one value from second array
+pointer to sort array
+check direction
+
+insert 
+
+===
+ sort based on direction
+
+==
+===
+
+
+here were done

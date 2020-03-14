@@ -1,0 +1,34 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.7</VERSION>
+ <DEVICE>"ATmega2560"</DEVICE>
+ <WORKING_DIR>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m2560def.inc</FILE>
+  <FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\header.asm</FILE>
+  <FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\initialise.asm</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\Debug\lab_2_part_b_main.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>lab_2_part_b_main.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>lab_2_part_b_main.map</FILE>
+  <FILE>lab_2_part_b_main.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <sort_array><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\header.asm</FILE><LINE>14</LINE></sort_array>
+  <start><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\initialise.asm</FILE><LINE>4</LINE></start>
+  <first_array><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\header.asm</FILE><LINE>21</LINE></first_array>
+  <second_array><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\header.asm</FILE><LINE>23</LINE></second_array>
+  <insert_initial_array><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\initialise.asm</FILE><LINE>18</LINE></insert_initial_array>
+  <end><FILE>C:\Users\john\Documents\University\COMP2121\Labs\LAB002\lab_2_part_b_main\lab_2_part_b_main\main.asm</FILE><LINE>4</LINE></end>
+ </LABELS>
+</ASSEMBLER_INFO>

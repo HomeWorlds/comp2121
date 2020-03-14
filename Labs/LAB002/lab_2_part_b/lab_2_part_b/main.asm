@@ -30,9 +30,41 @@ insertArray:
 	out SPL, r16	;stack pointer low, high
 	out SPH, r17
 
-.include "insertArrayFunction.asm"
+	ldi ZL, low(firstArray<<1)
+	ldi ZH, high(firstArray<<1)
+	ldi YL, low(sortArray<<1)
+	ldi YH, high(sortArray<<1)
 
-.include "insertArrayFunction.asm"
+	ldi index, 0
+	ldi size, 7
+
+loadFirst:
+	lpm curr, z+
+	st Y+, curr
+	cp index, size
+	breq insertNew
+	inc index
+	rjmp loadFirst
+
+insertNew:
+	ldi size, 4
+	ldi index, 0
+	ldi ZL, low(secondArray<<1)
+	ldi ZH, high(secondArray<<1)
+
+insertLoop:
+	lpm curr, Z+
+
+	.include "insert_request.asm"
+	; return array size
+
+	cp index, size
+	breq sort_prep
+	inc index
+	rjmp insertLoop
+
+
+; ========== insert array ==========
 
 sort_prep:
 	; Here we have the two arrays combined in data memory
